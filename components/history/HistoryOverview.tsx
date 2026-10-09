@@ -15,10 +15,10 @@ export function HistoryOverview() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="lg:pr-2">
             <p className="text-[11px] font-semibold uppercase text-brand">Tentang Sejarah</p>
-            <h2 className="mt-2.5 max-w-[20ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
+            <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-slate-900 tracking-tight leading-tight">
               Perjalanan Panjang Menuju Pendidikan Vokasi yang Unggul
             </h2>
-            <div className="mt-3 max-w-[500px] space-y-3">
+            <div className="mt-3">
               {story.map((paragraph) => (
                 <p
                   key={paragraph}
@@ -40,10 +40,10 @@ export function HistoryOverview() {
                     className={
                       index === 0
                         ? "flex gap-5"
-                        : "mt-6 flex gap-5 border-t border-line pt-6"
+                        : "mt-6 flex gap-3 border-t border-line pt-3"
                     }
                   >
-                    <Icon className="mt-0.5 h-9 w-9 shrink-0 text-navy" />
+                    <Icon className="mt-0.5 h-11 w-13 shrink-0 text-navy" />
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand">
                         {item.label}

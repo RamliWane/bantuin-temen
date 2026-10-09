@@ -16,7 +16,7 @@ export function HistoryHero() {
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,44%)_minmax(0,56%)] lg:gap-14">
           <div>
             <p className="text-[11px] font-semibold uppercase text-brand">Profil Sekolah</p>
-            <h1 className="mt-3 max-w-[18ch] text-[28px] font-bold leading-[1.18] tracking-tight text-navy sm:text-[32px] lg:text-[34px]">
+            <h1 className="mt-3 max-w-[18ch] text-[28px] font-bold text-slate-900 tracking-tight leading-tight sm:text-[32px] lg:text-[34px]">
               Sejarah Berdirinya SMK Taruna Bhakti
             </h1>
             <p className="mt-4 max-w-[460px] text-[14px] leading-[1.62] text-brand">

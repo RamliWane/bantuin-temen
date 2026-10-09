@@ -12,9 +12,9 @@ export function HistoryTimeline() {
       <div className="mx-auto max-w-[1080px] px-5 py-12 sm:px-6 md:py-14 lg:px-8 lg:py-[60px]">
         <header className="flex flex-col items-center text-center">
           <p className="text-[11px] font-semibold uppercase text-brand">Tonggak Sejarah</p>
-          <h2 className="mt-3 text-[26px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[30px] lg:text-[32px]">
+          <h1 className="mt-3 text-[28px] font-bold text-slate-900 tracking-tight leading-tight sm:text-[32px] lg:text-[34px]">
             Tonggak Sejarah Utama
-          </h2>
+          </h1>
           <p className="mt-2 max-w-[54ch] text-[14px] leading-[1.5] text-brand">
             Rangkaian perkembangan dan pencapaian SMK Taruna Bhakti dari masa
             ke masa

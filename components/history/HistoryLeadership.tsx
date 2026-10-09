@@ -129,9 +129,9 @@ export function HistoryLeadership() {
         <header className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,430px)] lg:items-end lg:gap-16">
           <div>
             <p className="text-[11px] font-semibold uppercase text-brand">DEDIKASI PENGABDIAN</p>
-            <h2 className="mt-3 max-w-[20ch] text-[28px] font-bold leading-[1.15] tracking-tight text-navy sm:text-[32px] lg:text-[38px]">
+            <h1 className="mt-3 max-w-[18ch] text-[28px] font-bold text-slate-900 tracking-tight leading-tight sm:text-[32px] lg:text-[34px]">
               Kepemimpinan dari Masa ke Masa
-            </h2>
+            </h1>
           </div>
           <p className="text-[14px] leading-[1.65] text-brand lg:pb-1.5 lg:text-[15px]">
             Para tokoh akademisi dan pendidik berintegritas yang memegang tongkat

@@ -29,9 +29,9 @@ export function HistoryFacilities() {
           Fasilitas &amp; Kegiatan
         </p>
           
-        <h2 className="mt-2.5 max-w-[22ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
+        <h1 className="mt-3 text-[28px] font-bold text-slate-900 tracking-tight leading-tight sm:text-[32px] lg:text-[34px]">
           Ruang untuk Berkarya dan Berkolaborasi
-        </h2>
+        </h1>
         <p className="mt-2 max-w-[620px] text-[14px] leading-[1.55] text-brand">
           Fasilitas dan kegiatan di SMK Taruna Bhakti mendukung proses belajar
           yang praktis, kreatif, dan relevan dengan dunia kerja.
