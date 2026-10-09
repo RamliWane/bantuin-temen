@@ -23,8 +23,13 @@ export function HistoryGallery() {
             className="h-[220px] w-full sm:h-[320px] lg:h-[420px]"
             sizes="(max-width: 1240px) 100vw, 1240px"
           />
-          <figcaption className="mt-2 text-[11px] leading-5 text-muted">
-            {galleryFeature.caption}
+          <figcaption className="mt-2 text-[14px] leading-[1.4] text-muted">
+            <span className="mt-0.5 block text-black">{galleryFeature.caption}</span>
+            {galleryFeature.major && (
+              <span className="text-[12px]">
+                {galleryFeature.major}
+              </span>
+            )}
           </figcaption>
         </figure>
 
@@ -37,8 +42,13 @@ export function HistoryGallery() {
                 className="h-[120px] w-full sm:h-[150px] lg:h-[168px]"
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
-              <figcaption className="mt-2 text-[12px] leading-[1.4] text-brand">
-                {item.caption}
+              <figcaption className="mt-2 text-[14px] leading-[1.4] text-brand">
+                <span className="mt-0.5 block text-black">{item.caption}</span>
+                {item.major && (
+                  <span className="text-[12px]">
+                    {item.major}
+                  </span>
+                )}
               </figcaption>
             </figure>
           ))}

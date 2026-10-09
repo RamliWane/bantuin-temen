@@ -11,7 +11,7 @@ export function HistoryTimeline() {
     <section className="border-t border-line bg-white">
       <div className="mx-auto max-w-[1080px] px-5 py-12 sm:px-6 md:py-14 lg:px-8 lg:py-[60px]">
         <header className="flex flex-col items-center text-center">
-          <p className="text-[11px] font-semibold uppercase text-brand">Tonggak Sejarah</p>
+          {/* <p className="text-[11px] font-semibold uppercase text-brand">Tonggak Sejarah</p> */}
           <h1 className="mt-3 text-[28px] font-bold text-slate-900 tracking-tight leading-tight sm:text-[32px] lg:text-[34px]">
             Tonggak Sejarah Utama
           </h1>
@@ -50,7 +50,7 @@ export function HistoryTimeline() {
                   />
                 </div>
 
-                <p className="col-start-2 row-start-1 text-[15px] font-bold leading-[1.3] text-navy md:col-start-1 md:row-start-1 md:pt-[18px] md:text-right md:text-[16px]">
+                <p className="col-start-2 row-start-1 text-[15px] font-bold leading-[1.3] text-navy tracking-tight md:col-start-1 md:row-start-1 md:pt-[18px] md:text-right md:text-[16px]">
                   {milestone.year}
                 </p>
 
@@ -73,7 +73,7 @@ export function HistoryTimeline() {
                         />
                       ) : null}
                     </div>
-                    <p className="mt-[7px] max-w-[68ch] text-[13px] leading-[1.6] text-brand md:text-[14px]">
+                    <p className="mt-[7px] max-w-3xl text-[13px] leading-[1.6] text-brand md:text-[14px]">
                       {milestone.description}
                     </p>
                   </article>

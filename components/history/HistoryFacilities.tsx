@@ -50,7 +50,7 @@ export function HistoryFacilities() {
                 />
                 <figcaption className="mt-2.5">
                   <div className="flex items-start gap-3">
-                    <Icon className="mt-[3px] h-[18px] w-[18px] shrink-0 text-navy" />
+                    <Icon className="mt-[3px] h-[22px] w-[22px] shrink-0 text-navy" />
                     <div>
                       <h3 className="text-[14px] font-bold leading-snug text-navy">
                         {spot.caption}

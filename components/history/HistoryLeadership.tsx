@@ -32,7 +32,7 @@ function LeaderRow({
 }) {
   const isActive = leader === active;
   const dark = index % 2 === 1;
-  const borderClass = isActive ? "border-navy" : dark ? "border-navy" : "border-line";
+  const borderClass = isActive ? "border-gray-300" : dark ? "border-gray-300" : "border-gray-300";
   const bgClass = dark ? "bg-navy" : "bg-white";
 
   return (
@@ -69,7 +69,7 @@ function LeaderRow({
 
       <div className="col-start-2 row-start-2 pb-7 md:col-start-3 md:row-start-1 md:pb-9 lg:pb-11">
         <article
-          className={`relative grid overflow-hidden rounded-[14px] border md:grid-cols-[34%_minmax(0,1fr)] ${borderClass} ${bgClass}`}
+          className={`relative grid overflow-hidden rounded-[5px] border border-gray-200 md:grid-cols-[34%_minmax(0,1fr)] ${borderClass} ${bgClass}`}
         >
           {isActive && (
             <span

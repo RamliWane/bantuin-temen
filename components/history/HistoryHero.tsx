@@ -47,13 +47,10 @@ export function HistoryHero() {
 <Photo
               alt="Laboratorium komputer"
               src={heroImage}
-              className="h-[220px] w-full sm:h-[240px] lg:h-[262px]"
+              className="h-[240px] w-full sm:h-[260px] lg:h-[292px]"
               preload
               sizes="(max-width: 1024px) 100vw, 56vw"
             />
-            <figcaption className="mt-2 text-[11px] leading-5 text-muted">
-              Laboratorium komputer
-            </figcaption>
           </figure>
         </div>
       </div>

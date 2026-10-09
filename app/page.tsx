@@ -8,12 +8,24 @@ import { HistoryTimeline } from "@/components/history/HistoryTimeline";
 export default function Home() {
   return (
     <main>
-      <HistoryHero />
-      <HistoryOverview />
-      <HistoryFacilities />
-      <HistoryTimeline />
-      <HistoryGallery />
-      <HistoryLeadership />
+      <div id="sejarah" className="scroll-mt-16">
+        <HistoryHero />
+      </div>
+      <div id="tentang" className="scroll-mt-16">
+        <HistoryOverview />
+      </div>
+      <div id="fasilitas" className="scroll-mt-16">
+        <HistoryFacilities />
+      </div>
+      <div id="perjalanan" className="scroll-mt-16">
+        <HistoryTimeline />
+      </div>
+      <div id="galeri" className="scroll-mt-16">
+        <HistoryGallery />
+      </div>
+      <div id="kepemimpinan" className="scroll-mt-16">
+        <HistoryLeadership />
+      </div>
     </main>
   );
 }
