@@ -18,6 +18,7 @@
   --color-muted: #7392b9;
   --color-line: #d7e3f2;
   --color-accent: #f07836;
+  --color-pale: #eff6fd;
 }
 
 @media (prefers-color-scheme: dark) {
