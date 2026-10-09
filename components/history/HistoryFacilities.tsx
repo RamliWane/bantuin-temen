@@ -1,0 +1,63 @@
+import { Photo } from "./Photo";
+import { SectionLabel } from "./SectionLabel";
+import { FilmIcon, MonitorIcon } from "./icons";
+
+const spots = [
+  {
+    icon: MonitorIcon,
+    caption: "Praktikum siswa di laboratorium Jurusan TJKT",
+    description:
+      "Suasana pembelajaran di ruang laboratorium dengan panduan instruktur terkait.",
+  },
+  {
+    icon: FilmIcon,
+    caption: "Studio Multimedia & Produksi Kreatif",
+    description:
+      "Kolaborasi antar siswa dalam pengerjaan konten siaran, desain grafis, dan animasi digital berbasis proyek riil.",
+  },
+];
+
+export function HistoryFacilities() {
+  return (
+    <section className="border-t border-muted bg-white">
+      <div className="mx-auto max-w-[1240px] px-5 pb-10 pt-7 sm:px-6 lg:px-8 lg:pb-12 lg:pt-7">
+        <SectionLabel>Fasilitas &amp; Kegiatan</SectionLabel>
+        <h2 className="mt-2.5 max-w-[22ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
+          Ruang untuk Berkarya dan Berkolaborasi
+        </h2>
+        <p className="mt-2 max-w-[620px] text-[14px] leading-[1.55] text-brand">
+          Fasilitas dan kegiatan di SMK Taruna Bhakti mendukung proses belajar
+          yang praktis, kreatif, dan relevan dengan dunia kerja.
+        </p>
+
+        <div className="mt-5 grid gap-5 md:grid-cols-[minmax(0,57%)_minmax(0,43%)]">
+          {spots.map((spot) => {
+            const Icon = spot.icon;
+            return (
+              <figure key={spot.caption}>
+                <Photo
+                  alt={spot.caption}
+                  className="h-[190px] w-full md:h-[228px]"
+                  sizes="(max-width: 768px) 100vw, 56vw"
+                />
+                <figcaption className="mt-2.5">
+                  <div className="flex items-start gap-3">
+                    <Icon className="mt-[3px] h-[18px] w-[18px] shrink-0 text-navy" />
+                    <div>
+                      <h3 className="text-[14px] font-bold leading-snug text-navy">
+                        {spot.caption}
+                      </h3>
+                      <p className="mt-1 text-[12px] leading-[1.5] text-brand">
+                        {spot.description}
+                      </p>
+                    </div>
+                  </div>
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
