@@ -1,35 +1,122 @@
+import Image from "next/image";
 import { leaders, type Leader } from "./leadership";
 import { SectionLabel } from "./SectionLabel";
 
-const former = leaders.slice(0, leaders.length - 1);
-const current = leaders[leaders.length - 1];
+const active = leaders[leaders.length - 1];
 
-function ArchiveRow({ leader, index }: { leader: Leader; index: number }) {
+function PhotoSlot() {
   return (
-    <li className="grid gap-2 border-t border-line py-4 md:grid-cols-[150px_minmax(0,1fr)] md:gap-x-12 md:py-5">
-      <div className="flex items-baseline gap-2.5 md:flex-col md:items-start md:gap-0">
+    <div className="absolute inset-0 flex items-center justify-center bg-pale">
+      <div className="flex flex-col items-center gap-1.5 border-2 border-dashed border-brand px-6 py-8 text-center">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
+          Foto Resmi
+        </span>
+        <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-brand">
+          Menyusul
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function LeaderRow({
+  leader,
+  index,
+  isFirst,
+  isLast,
+}: {
+  leader: Leader;
+  index: number;
+  isFirst: boolean;
+  isLast: boolean;
+}) {
+  const isActive = leader === active;
+  const dark = index % 2 === 1;
+  const borderClass = isActive ? "border-navy" : dark ? "border-navy" : "border-line";
+  const bgClass = dark ? "bg-navy" : "bg-white";
+
+  return (
+    <li className="grid grid-cols-[22px_minmax(0,1fr)] gap-x-4 md:grid-cols-[180px_28px_minmax(0,1fr)] md:gap-x-6 lg:gap-x-8">
+      <div className="relative col-start-1 row-start-1 row-end-3 flex justify-center md:col-start-2 md:row-end-2">
+        {!isFirst && (
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 top-0 h-[15px] w-0 -translate-x-1/2 border-l-2 border-dashed border-brand md:h-[37px]"
+          />
+        )}
+        {!isLast && (
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 top-[15px] bottom-0 w-0 -translate-x-1/2 border-l-2 border-dashed border-brand md:top-[37px]"
+          />
+        )}
         <span
           aria-hidden="true"
-          className="text-[11px] font-semibold tabular-nums tracking-[0.08em] text-brand md:mb-1.5"
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <p className="text-[15px] font-bold leading-none tabular-nums tracking-tight text-navy md:text-[16px]">
+          className={`relative z-[1] mt-2 h-3.5 w-3.5 rounded-full border-[3px] border-white md:mt-[30px] ${
+            isActive ? "bg-accent" : "bg-navy"
+          }`}
+        />
+      </div>
+
+      <div className="col-start-2 row-start-1 pb-3 pt-0.5 md:col-start-1 md:row-start-1 md:pb-0 md:pt-[26px] md:text-right">
+        <p className="text-[18px] font-bold leading-none tabular-nums tracking-tight text-navy md:text-[20px] lg:text-[22px]">
           {leader.period}
+        </p>
+        <p className="mt-1.5 text-[10px] font-semibold uppercase leading-[1.45] tracking-[0.15em] text-brand md:mt-2">
+          {leader.role}
         </p>
       </div>
 
-      <div className="max-w-[640px]">
-        <h3 className="text-[17px] font-bold leading-snug text-navy md:text-[18px]">
-          {leader.name}
-        </h3>
-        <p className="mt-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand">
-          <span aria-hidden="true" className="h-[2px] w-3.5 shrink-0 bg-accent" />
-          {leader.role}
-        </p>
-        <p className="mt-1.5 text-[13px] leading-[1.55] text-brand">
-          {leader.description}
-        </p>
+      <div className="col-start-2 row-start-2 pb-7 md:col-start-3 md:row-start-1 md:pb-9 lg:pb-11">
+        <article
+          className={`relative grid overflow-hidden rounded-[14px] border md:grid-cols-[34%_minmax(0,1fr)] ${borderClass} ${bgClass}`}
+        >
+          {isActive && (
+            <span
+              aria-hidden="true"
+              className="absolute left-0 top-0 z-[2] h-full w-1 bg-accent"
+            />
+          )}
+
+          <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[210px]">
+            {leader.photo ? (
+              <Image
+                src={leader.photo}
+                alt={`Foto ${leader.name}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 360px"
+                className="object-cover"
+              />
+            ) : (
+              <PhotoSlot />
+            )}
+          </div>
+
+          <div className="flex flex-col justify-center p-6 md:p-7 lg:p-8">
+            <p
+              className={`flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+                dark ? "text-accent" : "text-brand"
+              }`}
+            >
+              <span aria-hidden="true" className="h-[2px] w-5 shrink-0 bg-accent" />
+              {leader.role}
+            </p>
+            <h3
+              className={`mt-3 text-[22px] font-bold leading-[1.2] tracking-tight lg:text-[26px] ${
+                dark ? "text-white" : "text-navy"
+              }`}
+            >
+              {leader.name}
+            </h3>
+            <p
+              className={`mt-3 max-w-[52ch] text-[14px] leading-[1.7] lg:text-[15px] ${
+                dark ? "text-pale" : "text-brand"
+              }`}
+            >
+              {leader.description}
+            </p>
+          </div>
+        </article>
       </div>
     </li>
   );
@@ -38,45 +125,32 @@ function ArchiveRow({ leader, index }: { leader: Leader; index: number }) {
 export function HistoryLeadership() {
   return (
     <section className="border-t border-line bg-white">
-      <div className="mx-auto max-w-[1080px] px-5 py-12 sm:px-6 md:py-14 lg:px-8 lg:py-16">
+      <div className="mx-auto max-w-[1200px] px-5 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-20">
         <header className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,430px)] lg:items-end lg:gap-16">
           <div>
-            <SectionLabel accent>DEDIKASI PENGABDIAN</SectionLabel>
-            <h2 className="mt-3 max-w-[18ch] text-[26px] font-bold leading-[1.18] tracking-tight text-navy sm:text-[30px] lg:text-[32px]">
+            <p className="text-[11px] font-semibold uppercase text-brand">DEDIKASI PENGABDIAN</p>
+            <h2 className="mt-3 max-w-[20ch] text-[28px] font-bold leading-[1.15] tracking-tight text-navy sm:text-[32px] lg:text-[38px]">
               Kepemimpinan dari Masa ke Masa
             </h2>
           </div>
-          <p className="text-[14px] leading-[1.6] text-brand lg:pb-1">
+          <p className="text-[14px] leading-[1.65] text-brand lg:pb-1.5 lg:text-[15px]">
             Para tokoh akademisi dan pendidik berintegritas yang memegang tongkat
             estafet kepemimpinan, membimbing iklim ilmiah dan memelihara marwah
             sekolah.
           </p>
         </header>
 
-        <ol className="mt-8 md:mt-10">
-          {former.map((leader, index) => (
-            <ArchiveRow key={leader.name} leader={leader} index={index} />
+        <ol className="relative mt-12 md:mt-16">
+          {leaders.map((leader, index) => (
+            <LeaderRow
+              key={leader.name}
+              leader={leader}
+              index={index}
+              isFirst={index === 0}
+              isLast={index === leaders.length - 1}
+            />
           ))}
         </ol>
-
-        <div className="mt-10 rounded-[6px] bg-navy px-6 py-8 sm:px-9 md:mt-12 md:px-12 md:py-11">
-          <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-            <span aria-hidden="true" className="h-[2px] w-7 shrink-0 bg-accent" />
-            KEPEMIMPINAN SAAT INI
-          </p>
-          <h3 className="mt-5 text-[24px] font-bold leading-tight tracking-tight text-white sm:text-[28px] md:text-[32px]">
-            {current.name}
-          </h3>
-          <p className="mt-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] tabular-nums text-pale">
-            {current.period}
-          </p>
-          <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
-            {current.role}
-          </p>
-          <p className="mt-4 max-w-[62ch] text-[14px] leading-[1.65] text-pale">
-            {current.description}
-          </p>
-        </div>
       </div>
     </section>
   );

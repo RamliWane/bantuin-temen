@@ -14,7 +14,7 @@ export function HistoryOverview() {
       <div className="mx-auto max-w-[1240px] px-5 py-8 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="lg:pr-2">
-            <SectionLabel>Tentang Sejarah</SectionLabel>
+            <p className="text-[11px] font-semibold uppercase text-brand">Tentang Sejarah</p>
             <h2 className="mt-2.5 max-w-[20ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
               Perjalanan Panjang Menuju Pendidikan Vokasi yang Unggul
             </h2>

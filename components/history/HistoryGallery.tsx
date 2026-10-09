@@ -7,7 +7,7 @@ export function HistoryGallery() {
     <section className="border-t border-line bg-white">
       <div className="mx-auto max-w-[1240px] px-5 py-10 sm:px-6 lg:px-8 lg:py-12">
         <header>
-          <SectionLabel>Galeri Sekolah</SectionLabel>
+         <p className="text-[11px] font-semibold uppercase text-brand">Galeri Sekolah</p>
           <h2 className="mt-2.5 max-w-[24ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
             Suasana dan Kegiatan di SMK Taruna Bhakti
           </h2>

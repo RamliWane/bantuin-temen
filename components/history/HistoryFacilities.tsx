@@ -23,9 +23,12 @@ const spots = [
 
 export function HistoryFacilities() {
   return (
-    <section className="border-t border-line bg-white">
+    <section className="border-t border-line bg-blue-100">
       <div className="mx-auto max-w-[1240px] px-5 pb-10 pt-7 sm:px-6 lg:px-8 lg:pb-12 lg:pt-7">
-        <SectionLabel>Fasilitas &amp; Kegiatan</SectionLabel>
+        <p className="text-[11px] font-semibold uppercase text-brand">
+          Fasilitas &amp; Kegiatan
+        </p>
+          
         <h2 className="mt-2.5 max-w-[22ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
           Ruang untuk Berkarya dan Berkolaborasi
         </h2>

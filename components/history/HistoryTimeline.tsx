@@ -11,7 +11,7 @@ export function HistoryTimeline() {
     <section className="border-t border-line bg-white">
       <div className="mx-auto max-w-[1080px] px-5 py-12 sm:px-6 md:py-14 lg:px-8 lg:py-[60px]">
         <header className="flex flex-col items-center text-center">
-          <SectionLabel>Tonggak Sejarah</SectionLabel>
+          <p className="text-[11px] font-semibold uppercase text-brand">Tonggak Sejarah</p>
           <h2 className="mt-3 text-[26px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[30px] lg:text-[32px]">
             Tonggak Sejarah Utama
           </h2>

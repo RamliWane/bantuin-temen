@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/images",
       },
+      {
+        protocol: "https",
+        hostname: "d1vbn70lmn1nqe.cloudfront.net",
+        port: "",
+        pathname: "/prod/wp-content/uploads/**",
+      },
     ],
   },
   experimental: {
