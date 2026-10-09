@@ -1,8 +1,24 @@
-import Image from "next/image";
-import { leaders, type Leader } from "./leadership";
-import { SectionLabel } from "./SectionLabel";
+"use client";
 
-const active = leaders[leaders.length - 1];
+import Image from "next/image";
+import { useState } from "react";
+import { leaders, type Leader } from "./leadership";
+
+const VISIBLE_COUNT = 3;
+const newestFirst = [...leaders].reverse();
+const active = newestFirst[0];
+
+function wavePath(periods: number, height: number, cx = 10, amp = 8) {
+  const half = height / (periods * 2);
+  const segments = [`M ${cx} 0`];
+  for (let i = 0; i < periods * 2; i++) {
+    const direction = i % 2 === 0 ? 1 : -1;
+    const controlY = i * half + half / 2;
+    const endY = (i + 1) * half;
+    segments.push(`Q ${cx + direction * amp} ${controlY} ${cx} ${endY}`);
+  }
+  return segments.join(" ");
+}
 
 function PhotoSlot() {
   return (
@@ -22,13 +38,9 @@ function PhotoSlot() {
 function LeaderRow({
   leader,
   index,
-  isFirst,
-  isLast,
 }: {
   leader: Leader;
   index: number;
-  isFirst: boolean;
-  isLast: boolean;
 }) {
   const isActive = leader === active;
   const dark = index % 2 === 1;
@@ -37,27 +49,6 @@ function LeaderRow({
 
   return (
     <li className="grid grid-cols-[22px_minmax(0,1fr)] gap-x-4 md:grid-cols-[180px_28px_minmax(0,1fr)] md:gap-x-6 lg:gap-x-8">
-      <div className="relative col-start-1 row-start-1 row-end-3 flex justify-center md:col-start-2 md:row-end-2">
-        {!isFirst && (
-          <span
-            aria-hidden="true"
-            className="absolute left-1/2 top-0 h-[15px] w-0 -translate-x-1/2 border-l-2 border-dashed border-brand md:h-[37px]"
-          />
-        )}
-        {!isLast && (
-          <span
-            aria-hidden="true"
-            className="absolute left-1/2 top-[15px] bottom-0 w-0 -translate-x-1/2 border-l-2 border-dashed border-brand md:top-[37px]"
-          />
-        )}
-        <span
-          aria-hidden="true"
-          className={`relative z-[1] mt-2 h-3.5 w-3.5 rounded-full border-[3px] border-white md:mt-[30px] ${
-            isActive ? "bg-accent" : "bg-navy"
-          }`}
-        />
-      </div>
-
       <div className="col-start-2 row-start-1 pb-3 pt-0.5 md:col-start-1 md:row-start-1 md:pb-0 md:pt-[26px] md:text-right">
         <p className="text-[18px] font-bold leading-none tabular-nums tracking-tight text-navy md:text-[20px] lg:text-[22px]">
           {leader.period}
@@ -93,14 +84,14 @@ function LeaderRow({
           </div>
 
           <div className="flex flex-col justify-center p-6 md:p-7 lg:p-8">
-            <p
+           {/* <p
               className={`flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] ${
                 dark ? "text-accent" : "text-brand"
               }`}
             >
               <span aria-hidden="true" className="h-[2px] w-5 shrink-0 bg-accent" />
               {leader.role}
-            </p>
+            </p>  */}
             <h3
               className={`mt-3 text-[22px] font-bold leading-[1.2] tracking-tight lg:text-[26px] ${
                 dark ? "text-white" : "text-navy"
@@ -123,6 +114,10 @@ function LeaderRow({
 }
 
 export function HistoryLeadership() {
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = newestFirst.length > VISIBLE_COUNT;
+  const visible = expanded ? newestFirst : newestFirst.slice(0, VISIBLE_COUNT);
+
   return (
     <section className="border-t border-line bg-white">
       <div className="mx-auto max-w-[1200px] px-5 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-20">
@@ -141,16 +136,56 @@ export function HistoryLeadership() {
         </header>
 
         <ol className="relative mt-12 md:mt-16">
-          {leaders.map((leader, index) => (
-            <LeaderRow
-              key={leader.name}
-              leader={leader}
-              index={index}
-              isFirst={index === 0}
-              isLast={index === leaders.length - 1}
-            />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 bottom-7 grid grid-rows-1 grid-cols-[22px_minmax(0,1fr)] gap-x-4 md:bottom-9 md:grid-cols-[180px_28px_minmax(0,1fr)] md:gap-x-6 lg:bottom-11 lg:gap-x-8"
+          >
+            <div className="col-start-1 flex justify-center md:col-start-2">
+              <svg
+                className="h-full w-full"
+                viewBox="0 0 20 1000"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d={wavePath(16, 1000)}
+                  className="stroke-navy"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeDasharray="3 6"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
+            </div>
+          </div>
+          {visible.map((leader, index) => (
+            <LeaderRow key={leader.name} leader={leader} index={index} />
           ))}
         </ol>
+
+        {hasMore && (
+          <div className="mt-8 flex justify-center md:mt-10">
+            <button
+              type="button"
+              onClick={() => setExpanded((value) => !value)}
+              aria-expanded={expanded}
+              className="inline-flex items-center gap-2 rounded-[5px] border border-navy px-6 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-navy transition-colors hover:bg-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {expanded ? "Tampilkan Lebih Sedikit" : "Lihat Selengkapnya"}
+              <span aria-hidden="true" className={`transition-transform ${expanded ? "rotate-180" : ""}`}>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2.5 4.5 6 8l3.5-3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
