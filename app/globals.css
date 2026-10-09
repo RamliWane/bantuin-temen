@@ -16,6 +16,8 @@
   --color-navy: #102a56;
   --color-brand: #416fa8;
   --color-muted: #7392b9;
+  --color-line: #d7e3f2;
+  --color-accent: #f07836;
 }
 
 @media (prefers-color-scheme: dark) {

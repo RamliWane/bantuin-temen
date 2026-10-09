@@ -5,12 +5,16 @@ import { FilmIcon, MonitorIcon } from "./icons";
 const spots = [
   {
     icon: MonitorIcon,
+    src: "https://smktarunabhakti.sch.id/wp-content/uploads/2024/11/Ruang-CC-Animasi-1.jpg",
+    alt: "Siswa mengerjakan latihan praktik di ruang komputer sekolah",
     caption: "Praktikum siswa di laboratorium Jurusan TJKT",
     description:
       "Suasana pembelajaran di ruang laboratorium dengan panduan instruktur terkait.",
   },
   {
     icon: FilmIcon,
+    src: "https://smktarunabhakti.sch.id/wp-content/uploads/2024/11/Studio-BRF.jpg",
+    alt: "Siswa menyiapkan syuting di studio dengan dinding hijau dan lampu produksi",
     caption: "Studio Multimedia & Produksi Kreatif",
     description:
       "Kolaborasi antar siswa dalam pengerjaan konten siaran, desain grafis, dan animasi digital berbasis proyek riil.",
@@ -19,7 +23,7 @@ const spots = [
 
 export function HistoryFacilities() {
   return (
-    <section className="border-t border-muted bg-white">
+    <section className="border-t border-line bg-white">
       <div className="mx-auto max-w-[1240px] px-5 pb-10 pt-7 sm:px-6 lg:px-8 lg:pb-12 lg:pt-7">
         <SectionLabel>Fasilitas &amp; Kegiatan</SectionLabel>
         <h2 className="mt-2.5 max-w-[22ch] text-[24px] font-bold leading-[1.2] tracking-tight text-navy sm:text-[26px] lg:text-[28px]">
@@ -36,7 +40,8 @@ export function HistoryFacilities() {
             return (
               <figure key={spot.caption}>
                 <Photo
-                  alt={spot.caption}
+                  alt={spot.alt}
+                  src={spot.src}
                   className="h-[190px] w-full md:h-[228px]"
                   sizes="(max-width: 768px) 100vw, 56vw"
                 />

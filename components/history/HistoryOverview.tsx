@@ -30,7 +30,7 @@ export function HistoryOverview() {
             </div>
           </div>
 
-          <div className="lg:my-4 lg:border-l lg:border-muted lg:pl-14">
+          <div className="lg:my-4 lg:border-l lg:border-line lg:pl-14">
             <ul>
               {achievements.map((item, index) => {
                 const Icon = icons[item.icon];
@@ -40,7 +40,7 @@ export function HistoryOverview() {
                     className={
                       index === 0
                         ? "flex gap-5"
-                        : "mt-6 flex gap-5 border-t border-muted pt-6"
+                        : "mt-6 flex gap-5 border-t border-line pt-6"
                     }
                   >
                     <Icon className="mt-0.5 h-9 w-9 shrink-0 text-navy" />

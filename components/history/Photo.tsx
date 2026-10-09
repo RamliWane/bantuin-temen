@@ -30,7 +30,7 @@ export function Photo({
           className="object-cover"
         />
       ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 border border-muted px-6 text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 border border-line px-6 text-center">
           <PhotoIcon className="h-8 w-8 text-muted" />
           <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
             Foto Placeholder

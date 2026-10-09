@@ -22,6 +22,9 @@ export const achievements: Achievement[] = [
   },
 ];
 
+export const heroImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRREUOmSwGXn28LygOdMX6kCCn3j1cHq8noxob0XGk5ZRc6zMsi0fOVK1k&s=10";
+
 export const heroDescription =
   "SMK Taruna Bhakti berdiri dengan semangat untuk mencetak sumber daya manusia yang kompeten, berkarakter, dan siap menghadapi dunia kerja. Sejak awal berdirinya, sekolah ini terus berkembang menjadi salah satu SMK unggulan di wilayah Depok dengan fokus pada pendidikan vokasi yang berkualitas.";
 

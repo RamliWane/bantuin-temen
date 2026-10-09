@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Photo } from "./Photo";
 import { SectionLabel } from "./SectionLabel";
-import { heroDescription } from "./history";
+import { heroDescription, heroImage } from "./history";
 
 const profileTabs = [
   { label: "Sejarah", href: "/", active: true },
@@ -32,7 +32,7 @@ export function HistoryHero() {
                       className={
                         tab.active
                           ? "inline-flex h-10 items-center rounded-full border border-navy bg-navy px-5 text-[13px] font-medium text-white"
-                          : "inline-flex h-10 items-center rounded-full border border-muted bg-white px-5 text-[13px] font-medium text-brand transition-colors hover:border-navy hover:text-navy"
+                          : "inline-flex h-10 items-center rounded-full border border-line bg-white px-5 text-[13px] font-medium text-brand transition-colors hover:border-navy hover:text-navy"
                       }
                     >
                       {tab.label}
@@ -44,19 +44,20 @@ export function HistoryHero() {
           </div>
 
           <figure>
-            <Photo
-              alt="Suasana laboratorium komputer SMK Taruna Bhakti"
+<Photo
+              alt="Laboratorium komputer"
+              src={heroImage}
               className="h-[220px] w-full sm:h-[240px] lg:h-[262px]"
               preload
               sizes="(max-width: 1024px) 100vw, 56vw"
             />
-            <figcaption className="mt-2 text-[11px] leading-5 text-[#416FA8]">
-              Suasana laboratorium komputer SMK Taruna Bhakti
+            <figcaption className="mt-2 text-[11px] leading-5 text-muted">
+              Laboratorium komputer
             </figcaption>
           </figure>
         </div>
       </div>
-      <div className="h-px w-full bg-muted" />
+      <div className="h-px w-full bg-line" />
     </section>
   );
 }
